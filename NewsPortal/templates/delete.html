@@ -1,0 +1,39 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+
+<h2>Вы действительно хотите удалить данный товар?</h2>
+
+<style>
+    TABLE {border-collapse: collapse;}
+    TD, TH {border: 1px solid black;}
+</style>
+
+<table>
+    <thead>
+        <th>Заголовок</th>
+        <th>Автор</th>
+        <th>Дата публикации</th>
+        <th>Категория</th>
+        <th>Статья</th>
+    </thead>
+
+    <tr>
+        <td>{{ Post.title }}</td>
+        <td>{{ Post.author }}</td>
+        <td>{{ Post.dateCreation | date:'d M Y'}}</td>
+        <td>{{ Post.categoryType }}</td>
+        <td>{{ Post.text }}</td>
+    </tr>
+</table>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="подтвердить">
+</form>
+
+{% endblock content %}
